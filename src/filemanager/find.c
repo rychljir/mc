@@ -567,6 +567,7 @@ find_parameters (char **start_dir, ssize_t * start_dir_len,
     const char *file_name_label = N_("File name:");
     const char *file_recurs_label = N_("&Find recursively");
     const char *file_pattern_label = N_("&Using shell patterns");
+    const char *file_skip_hidden_label = N_("S&kip hidden");
     const char *file_only_directories_label = N_("Only &directories");
 #ifdef HAVE_CHARSET
     const char *file_all_charsets_label = N_("&All charsets");
@@ -602,6 +603,7 @@ find_parameters (char **start_dir, ssize_t * start_dir_len,
         file_pattern_label = _(file_pattern_label);
         file_skip_hidden_label = _(file_skip_hidden_label);
 	file_only_directories_label = _(file_only_directories_label);
+
 #ifdef HAVE_CHARSET
         file_all_charsets_label = _(file_all_charsets_label);
 #endif
@@ -713,6 +715,8 @@ find_parameters (char **start_dir, ssize_t * start_dir_len,
     only_directories_cbox = check_new (y1++, 3, options.only_directories, file_only_directories_label);
     add_widget (find_dlg, only_directories_cbox);
 
+    only_directories_cbox = check_new (cbox_position--, 3, options.only_directories, file_only_directories_label);
+    add_widget (find_dlg, only_directories_cbox);
     file_pattern_cbox = check_new (y1++, x1, options.file_pattern, file_pattern_label);
     add_widget (find_dlg, file_pattern_cbox);
 
